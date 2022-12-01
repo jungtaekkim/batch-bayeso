@@ -132,3 +132,5 @@ dmypy.json
 .DS_Store
 __MACOSX/
 *.swp
+outputs/
+slurm_run_bbo.sh
