@@ -5,41 +5,7 @@ import argparse
 
 import bayeso_benchmarks.utils as bb_utils
 
-from bbo import BBOLocalPenalization
-
-
-def run_batch_bo_single_iteration(str_method, X, Y, bounds, size_batch):
-    if str_method == 'local_penalization':
-        model_bo = BBOLocalPenalization(bounds, size_batch)
-    else:
-        raise ValueError
-
-    X_batch, dict_info = model_bo.optimize(X, Y)
-    time_overall = dict_info['time_overall']
-
-    return X_batch, time_overall
-
-def run_batch_bo(str_method, objective, bounds, size_batch, seed=None):
-    X = np.random.RandomState(seed).uniform(size=(size_batch, bounds.shape[0])) * (bounds[:, 1] - bounds[:, 0]) + bounds[:, 0]
-    Y = objective(X)
-    times = np.array([0.0])
-
-    print(X)
-
-    for ind_iter in range(0, num_iter):
-        X_batch, time_overall = run_batch_bo_single_iteration(
-            str_method, X, Y, bounds, size_batch
-        )
-        print(f'Iteration {ind_iter + 1}')
-        print('X_batch')
-        print(X_batch)
-        print('')
-
-        X = np.concatenate([X, X_batch], axis=0)
-        Y = np.concatenate([Y, objective(X_batch)], axis=0)
-        times = np.concatenate([times, [time_overall]], axis=0)
-
-    return X, Y, times
+from batch_bayeso import BatchBayesianOptimization
 
 
 if __name__ == '__main__':
@@ -81,7 +47,8 @@ if __name__ == '__main__':
         Y = obj_target.output(X)
         return Y
 
-    X, Y, times = run_batch_bo(str_method, fun_target, bounds, size_batch)
+    model_bbo = BatchBayesianOptimization(str_method, fun_target, bounds, size_batch, debug=True)
+    X, Y, times = model_bbo.run(num_iter)
 
     print(f'X.shape {X.shape} Y.shape {Y.shape} times.shape {times.shape}')
     print('=' * num_separators + 'END' + '=' * num_separators)
