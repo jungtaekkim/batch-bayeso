@@ -4,13 +4,13 @@ from scipy.optimize import minimize
 from scipy.stats import norm
 import scipy.spatial.distance as scisd
 
-from bayeso.bo import base_bo
-from bayeso import covariance
 from bayeso import constants
 from bayeso.gp import gp
 from bayeso.gp import gp_kernel
 from bayeso.utils import utils_bo
 from bayeso.utils import utils_logger
+
+from batch_bayeso import base_batch_bo
 
 
 def grad_cov_matern52(X: np.ndarray, Xp:np.ndarray,
@@ -56,7 +56,7 @@ def grad_cov_main(str_cov: str, X: np.ndarray, Xp: np.ndarray, hyps: dict,
     return grad_cov_X_Xp
 
 
-class BBOLocalPenalization(base_bo.BaseBO):
+class BBOLocalPenalization(base_batch_bo.BaseBBO):
     def __init__(self, range_X: np.ndarray,
         size_batch: int,
         str_cov: str=constants.STR_COV,
@@ -91,18 +91,13 @@ class BBOLocalPenalization(base_bo.BaseBO):
         assert str_optimizer_method_bo in constants.ALLOWED_OPTIMIZER_METHOD_BO
         assert str_modelselection_method in constants.ALLOWED_MODELSELECTION_METHOD
 
-        str_surrogate = 'gp'
-        assert str_surrogate in constants.ALLOWED_SURROGATE
-
-        super().__init__(range_X, str_surrogate, str_acq,
-            str_optimizer_method_bo, normalize_Y, str_exp, debug)
-
-        self.size_batch = size_batch
-        self.str_cov = str_cov
-        self.use_ard = use_ard
-        self.str_optimizer_method_gp = str_optimizer_method_gp
-        self.str_modelselection_method = str_modelselection_method
-        self.prior_mu = prior_mu
+        super().__init__(range_X, size_batch,
+            str_cov=str_cov, str_acq=str_acq, normalize_Y=normalize_Y,
+            use_ard=use_ard, prior_mu=prior_mu,
+            str_optimizer_method_gp=str_optimizer_method_gp,
+            str_optimizer_method_bo=str_optimizer_method_bo,
+            str_modelselection_method=str_modelselection_method,
+            str_exp=str_exp, debug=debug)
 
     def _optimize(self, fun_negative_acquisition: constants.TYPING_CALLABLE,
         str_sampling_method: str,

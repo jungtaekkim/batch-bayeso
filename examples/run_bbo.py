@@ -26,7 +26,7 @@ if __name__ == '__main__':
         'local_penalization',
     ]
 
-    num_separators = 25
+    num_separators = 30
 
     list_str_target = str_target.split('_')
     if len(list_str_target) == 1:
