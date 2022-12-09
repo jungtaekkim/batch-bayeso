@@ -23,6 +23,7 @@ if __name__ == '__main__':
     num_iter = args.num_iter
 
     assert str_method in [
+        'random',
         'local_penalization',
     ]
 
@@ -39,9 +40,6 @@ if __name__ == '__main__':
     print('=' * num_separators + 'START' + '=' * num_separators)
 
     bounds = obj_target.get_bounds()
-    print('Bounds')
-    print(bounds)
-    print('')
 
     def fun_target(X):
         Y = obj_target.output(X)
@@ -51,4 +49,4 @@ if __name__ == '__main__':
     X, Y, times = model_bbo.run(num_iter)
 
     print(f'X.shape {X.shape} Y.shape {Y.shape} times.shape {times.shape}')
-    print('=' * num_separators + 'END' + '=' * num_separators)
+    print('=' * num_separators + ' END ' + '=' * num_separators)

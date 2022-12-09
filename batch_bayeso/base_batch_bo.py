@@ -48,8 +48,15 @@ class BaseBBO(base_bo.BaseBO):
         assert str_optimizer_method_bo in constants.ALLOWED_OPTIMIZER_METHOD_BO
         assert str_modelselection_method in constants.ALLOWED_MODELSELECTION_METHOD
 
+        assert str_optimizer_method_bo == 'L-BFGS-B'
+
         str_surrogate = 'gp'
         assert str_surrogate in constants.ALLOWED_SURROGATE
+
+        if str_exp is None:
+            str_exp = 'batch'
+        else:
+            str_exp = f'batch_{str_exp}'
 
         super().__init__(range_X, str_surrogate, str_acq,
             str_optimizer_method_bo, normalize_Y, str_exp, debug)

@@ -3,6 +3,7 @@ import time
 
 from bayeso.utils import utils_logger
 
+from batch_bayeso import BBORandom
 from batch_bayeso import BBOLocalPenalization
 
 
@@ -14,12 +15,28 @@ class BatchBayesianOptimization:
         self.size_batch = size_batch
         self.debug = debug
 
-        if self.str_method == 'local_penalization':
-            self.model_bo = BBOLocalPenalization(self.bounds, self.size_batch)
+        # TODO: fix the following line
+        debug_ = False
+
+        if self.str_method == 'random':
+            self.model_bo = BBORandom(self.bounds, self.size_batch, debug=debug_)
+        elif self.str_method == 'local_penalization':
+            self.model_bo = BBOLocalPenalization(self.bounds, self.size_batch, debug=debug_)
         else:
             raise ValueError
 
         self.logger = utils_logger.get_logger(f'batch_bo-{str_method}')
+        self.print_info()
+
+    def print_info(self):
+        num_separators = 15
+
+        print('=' * num_separators + 'INFO START' + '=' * num_separators)
+        print(f'bounds:\n{utils_logger.get_str_array(self.bounds)}')
+        print(f'str_method: {self.str_method}')
+        print(f'size_batch: {self.size_batch}')
+        print(f'debug: {self.debug}')
+        print('=' * num_separators + ' INFO END ' + '=' * num_separators)
 
     def get_initials(self, str_initial_method='sobol', seed=None):
         return self.model_bo.get_initials(str_initial_method, self.size_batch, seed=seed)

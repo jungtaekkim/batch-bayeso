@@ -88,6 +88,8 @@ class BBOLocalPenalization(base_batch_bo.BaseBBO):
         assert str_optimizer_method_bo in constants.ALLOWED_OPTIMIZER_METHOD_BO
         assert str_modelselection_method in constants.ALLOWED_MODELSELECTION_METHOD
 
+        assert str_optimizer_method_bo == 'L-BFGS-B'
+
         super().__init__(range_X, size_batch,
             str_cov=str_cov, str_acq=str_acq, normalize_Y=normalize_Y,
             use_ard=use_ard, prior_mu=prior_mu,
@@ -170,6 +172,7 @@ class BBOLocalPenalization(base_batch_bo.BaseBBO):
     def optimize(self, X_train: np.ndarray, Y_train: np.ndarray,
         str_sampling_method: str=constants.STR_SAMPLING_METHOD_AO,
         num_samples: int=constants.NUM_SAMPLES_AO,
+        seed: int=None,
     ) -> constants.TYPING_TUPLE_ARRAY_DICT:
         assert isinstance(X_train, np.ndarray)
         assert isinstance(Y_train, np.ndarray)
@@ -218,7 +221,7 @@ class BBOLocalPenalization(base_batch_bo.BaseBBO):
 
             minimum_evaluation = np.min(Y_train)
 
-            Xp = self.get_samples('uniform', num_samples=10000, seed=42*(ind + 1))
+            Xp = self.get_samples('uniform', num_samples=10000, seed=seed*(ind + 1) if seed is not None else seed)
 
             grad_cov_Xp_X = grad_cov_main(self.str_cov, Xp, X_train, hyps)
 
