@@ -1,6 +1,6 @@
 #!/bin/bash
 
-METHODS='random local_penalization'
+METHODS='constant random local_penalization'
 TARGET='branin'
 SIZE_BATCH=5
 NUM_ITER=10

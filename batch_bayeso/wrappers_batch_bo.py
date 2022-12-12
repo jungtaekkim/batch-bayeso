@@ -3,8 +3,7 @@ import time
 
 from bayeso.utils import utils_logger
 
-from batch_bayeso import BBORandom
-from batch_bayeso import BBOLocalPenalization
+from batch_bayeso import BBORandom, BBOConstant, BBOLocalPenalization
 
 
 class BatchBayesianOptimization:
@@ -20,6 +19,9 @@ class BatchBayesianOptimization:
 
         if self.str_method == 'random':
             self.model_bo = BBORandom(self.bounds, self.size_batch, debug=debug_)
+        elif self.str_method == 'constant':
+            constant = -100.0
+            self.model_bo = BBOConstant(self.bounds, self.size_batch, constant, debug=debug_)
         elif self.str_method == 'local_penalization':
             self.model_bo = BBOLocalPenalization(self.bounds, self.size_batch, debug=debug_)
         else:
@@ -48,6 +50,8 @@ class BatchBayesianOptimization:
         return X_batch, time_overall
 
     def run(self, num_iter, seed=None):
+        time_first_start = time.time()
+
         X = self.get_initials(seed=seed)
         Y = self.objective(X)
         if self.debug:
@@ -56,7 +60,8 @@ class BatchBayesianOptimization:
         if len(Y.shape) == 1:
             Y = Y[..., np.newaxis]
 
-        times = np.array([0.0])
+        time_first_end = time.time()
+        times = np.array([time_first_end - time_first_start])
 
         for ind_iter in range(0, num_iter):
             X_batch, time_overall = self.run_single_iteration(X, Y)
@@ -67,6 +72,8 @@ class BatchBayesianOptimization:
             X = np.concatenate([X, X_batch], axis=0)
             Y = np.concatenate([Y, Y_batch], axis=0)
             times = np.concatenate([times, [time_overall]], axis=0)
+            assert X.shape[0] == Y.shape[0]
+            assert times.shape[0] == (ind_iter + 2)
 
             self.logger.info('Iteration %d: X.shape %s Y.shape %s times.shape %s', ind_iter + 1, str(X.shape), str(Y.shape), str(times.shape))
 

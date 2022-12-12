@@ -24,6 +24,7 @@ if __name__ == '__main__':
 
     assert str_method in [
         'random',
+        'constant',
         'local_penalization',
     ]
 
