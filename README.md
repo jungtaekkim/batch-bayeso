@@ -10,7 +10,10 @@ This repository is to re-implement several baseline methods in batch Bayesian op
 
 ## Algorithms
 
-- Batch Bayesian optimization with random query selection
-- Batch Bayesian optimization with a constant liar
-- Batch Bayesian optimization with a surrogate prediction
-- Batch Bayesian optimization via local penalization
+* Batch Bayesian optimization with random query selection
+* Batch Bayesian optimization with a constant liar
+* Batch Bayesian optimization with a surrogate prediction
+* Batch Bayesian optimization via local penalization
+
+## License
+[MIT License](LICENSE)
