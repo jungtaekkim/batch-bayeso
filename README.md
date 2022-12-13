@@ -1,6 +1,12 @@
-# Re-implementation of Batch Bayesian Optimization
+<p align="center">
+<img src="https://github.com/jungtaekkim/bayeso/blob/main/docs/_static/assets/logo_bayeso_capitalized.svg" width="400" />
+</p>
+
+# Batch BayesO: Re-implementation of Batch Bayesian Optimization
 
 This repository is to re-implement several baseline methods in batch Bayesian optimization, using [BayesO](https://github.com/jungtaekkim/bayeso).
+
+* [https://bayeso.org](https://bayeso.org)
 
 ## Algorithms
 
