@@ -3,7 +3,7 @@ import time
 
 from bayeso.utils import utils_logger
 
-from batch_bayeso import BBORandom, BBOConstant, BBOLocalPenalization
+from batch_bayeso import BBORandom, BBOConstant, BBOPrediction, BBOLocalPenalization
 
 
 class BatchBayesianOptimization:
@@ -22,6 +22,8 @@ class BatchBayesianOptimization:
         elif self.str_method == 'constant':
             constant = -100.0
             self.model_bo = BBOConstant(self.bounds, self.size_batch, constant, debug=debug_)
+        elif self.str_method == 'prediction':
+            self.model_bo = BBOPrediction(self.bounds, self.size_batch, debug=debug_)
         elif self.str_method == 'local_penalization':
             self.model_bo = BBOLocalPenalization(self.bounds, self.size_batch, debug=debug_)
         else:
