@@ -221,6 +221,7 @@ class BBOLocalPenalization(base_batch_bo.BaseBBO):
 
             minimum_evaluation = np.min(Y_train)
 
+            # Jungtaek: let me fix this
             Xp = self.get_samples('uniform', num_samples=10000, seed=seed*(ind + 1) if seed is not None else seed)
 
             grad_cov_Xp_X = grad_cov_main(self.str_cov, Xp, X_train, hyps)
