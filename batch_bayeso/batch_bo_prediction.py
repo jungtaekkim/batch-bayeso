@@ -95,7 +95,6 @@ class BBOPrediction(base_batch_bo.BaseBBO):
     def optimize(self, X_train: np.ndarray, Y_train: np.ndarray,
         str_sampling_method: str=constants.STR_SAMPLING_METHOD_AO,
         num_samples: int=constants.NUM_SAMPLES_AO,
-        seed: int=None,
     ) -> constants.TYPING_TUPLE_ARRAY_DICT:
         assert isinstance(X_train, np.ndarray)
         assert isinstance(Y_train, np.ndarray)

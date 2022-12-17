@@ -20,7 +20,7 @@ class BatchBayesianOptimization:
         if self.str_method == 'random':
             self.model_bo = BBORandom(self.bounds, self.size_batch, debug=debug_)
         elif self.str_method == 'constant':
-            constant = -100.0
+            constant = 100.0
             self.model_bo = BBOConstant(self.bounds, self.size_batch, constant, debug=debug_)
         elif self.str_method == 'prediction':
             self.model_bo = BBOPrediction(self.bounds, self.size_batch, debug=debug_)

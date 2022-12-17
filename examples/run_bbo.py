@@ -1,6 +1,3 @@
-import numpy as np
-import os
-import time
 import argparse
 
 import bayeso_benchmarks.utils as bb_utils
