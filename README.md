@@ -13,9 +13,28 @@ This repository is to re-implement several baseline methods in batch Bayesian op
 
 * Batch Bayesian optimization with random query selection
 * [Batch Bayesian optimization with a kriging believer](https://link.springer.com/chapter/10.1007/978-3-642-10701-6_6)
+
+```
+David Ginsbourger, Rodolphe Le Riche, and Laurent Carraro. "Kriging is well-suited to parallelize optimization." Computational intelligence in expensive optimization problems, pp. 131-162. 2010.
+```
+
 * [Batch Bayesian optimization with a constant liar](https://link.springer.com/chapter/10.1007/978-3-642-10701-6_6)
-* [Batch Bayesian optimization with pure exploration](https://arxiv.org/abs/1304.5350)
-* [Batch Bayesian optimization via local penalization](https://arxiv.org/abs/1505.08052)
+
+```
+David Ginsbourger, Rodolphe Le Riche, and Laurent Carraro. "Kriging is well-suited to parallelize optimization." Computational intelligence in expensive optimization problems, pp. 131-162. 2010.
+```
+
+* [Batch Bayesian optimization with pure exploration](https://link.springer.com/chapter/10.1007/978-3-642-40988-2_15)
+
+```
+Emile Contal, David Buffoni, Alexandre Robicquet, and Nicolas Vayatis. "Parallel Gaussian process optimization with upper confidence bound and pure exploration." In Proceedings of the European Conference on Machine Learning and Knowledge Discovery in Databases, pp. 225-240. 2013.
+```
+
+* [Batch Bayesian optimization via local penalization](https://proceedings.mlr.press/v51/gonzalez16a.html)
+
+```
+Javier Gonzalez, Zhenwen Dai, Philipp Hennig, Neil Lawrence. "Batch Bayesian optimization via local penalization." In Proceedings of the International Conference on Artificial Intelligence and Statistics, pp. 648-657. 2016.
+```
 
 ## Installation
 
