@@ -14,6 +14,7 @@ This repository is to re-implement several baseline methods in batch Bayesian op
 * Batch Bayesian optimization with random query selection
 * [Batch Bayesian optimization with a kriging believer](https://link.springer.com/chapter/10.1007/978-3-642-10701-6_6)
 * [Batch Bayesian optimization with a constant liar](https://link.springer.com/chapter/10.1007/978-3-642-10701-6_6)
+* [Batch Bayesian optimization with pure exploration](https://arxiv.org/abs/1304.5350)
 * [Batch Bayesian optimization via local penalization](https://arxiv.org/abs/1505.08052)
 
 ## Installation
