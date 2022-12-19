@@ -1,6 +1,6 @@
 #!/bin/bash
 
-METHODS='random constant prediction local_penalization'
+METHODS='random constant prediction pure_exploration local_penalization'
 TARGET='branin'
 SIZE_BATCH=5
 NUM_ITER=10
