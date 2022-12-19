@@ -27,7 +27,7 @@ David Ginsbourger, Rodolphe Le Riche, and Laurent Carraro. "Kriging is well-suit
 * [Batch Bayesian optimization with pure exploration](https://link.springer.com/chapter/10.1007/978-3-642-40988-2_15)
 
 ```
-Emile Contal, David Buffoni, Alexandre Robicquet, and Nicolas Vayatis. "Parallel Gaussian process optimization with upper confidence bound and pure exploration." In Proceedings of the European Conference on Machine Learning and Knowledge Discovery in Databases, pp. 225-240. 2013.
+Emile Contal, David Buffoni, Alexandre Robicquet, and Nicolas Vayatis. "Parallel Gaussian process optimization with upper confidence bound and pure exploration." In Proceedings of the European Conference on Machine Learning and Principles and Practice of Knowledge Discovery in Databases, pp. 225-240. 2013.
 ```
 
 * [Batch Bayesian optimization via local penalization](https://proceedings.mlr.press/v51/gonzalez16a.html)
