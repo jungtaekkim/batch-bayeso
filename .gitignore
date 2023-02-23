@@ -133,10 +133,5 @@ dmypy.json
 __MACOSX/
 *.swp
 outputs/
-slurm_run_bbo.sh
-run_bbo_results.py
 figures/
 results/
-script_all.sh
-slurm_all.sh
-plot_results.py
