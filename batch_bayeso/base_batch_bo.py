@@ -75,9 +75,7 @@ class BaseBBO(base_bo.BaseBO):
         list_next_point = []
 
         list_bounds = self._get_bounds()
-        initials = self.get_samples(str_sampling_method,
-            fun_objective=fun_negative_acquisition,
-            num_samples=num_samples)
+        initials = self.get_samples(str_sampling_method, num_samples=num_samples)
 
         for arr_initial in initials:
             next_point = minimize(
