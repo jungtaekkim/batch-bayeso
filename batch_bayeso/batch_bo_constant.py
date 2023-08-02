@@ -99,11 +99,13 @@ class BBOConstant(base_batch_bo.BaseBBO):
     def optimize(self, X_train: np.ndarray, Y_train: np.ndarray,
         str_sampling_method: str=constants.STR_SAMPLING_METHOD_AO,
         num_samples: int=constants.NUM_SAMPLES_AO,
+        seed: int=None,
     ) -> constants.TYPING_TUPLE_ARRAY_DICT:
         assert isinstance(X_train, np.ndarray)
         assert isinstance(Y_train, np.ndarray)
         assert isinstance(str_sampling_method, str)
         assert isinstance(num_samples, int)
+        assert isinstance(seed, (int, type(None)))
         assert len(X_train.shape) == 2
         assert len(Y_train.shape) == 2
         assert Y_train.shape[1] == 1
@@ -149,7 +151,7 @@ class BBOConstant(base_batch_bo.BaseBBO):
                 X_test, X_train, Y_train, cov_X_X, inv_cov_X_X, hyps
             )
             next_point, next_points = self._optimize(fun_negative_acquisition,
-                str_sampling_method=str_sampling_method, num_samples=num_samples)
+                str_sampling_method=str_sampling_method, num_samples=num_samples, seed=seed + ind)
 
             next_point = utils_bo.check_points_in_bounds(next_point[np.newaxis, ...], np.array(self._get_bounds()))[0]
             next_points = utils_bo.check_points_in_bounds(next_points, np.array(self._get_bounds()))

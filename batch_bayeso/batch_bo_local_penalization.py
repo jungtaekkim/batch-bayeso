@@ -178,6 +178,7 @@ class BBOLocalPenalization(base_batch_bo.BaseBBO):
         assert isinstance(Y_train, np.ndarray)
         assert isinstance(str_sampling_method, str)
         assert isinstance(num_samples, int)
+        assert isinstance(seed, (int, type(None)))
         assert len(X_train.shape) == 2
         assert len(Y_train.shape) == 2
         assert Y_train.shape[1] == 1
@@ -236,7 +237,7 @@ class BBOLocalPenalization(base_batch_bo.BaseBBO):
                 X_test, X_train, Y_train, np.array(X_batch), minimum_evaluation, lipschitz, cov_X_X, inv_cov_X_X, hyps
             )
             next_point, next_points = self._optimize(fun_negative_acquisition,
-                str_sampling_method=str_sampling_method, num_samples=num_samples)
+                str_sampling_method=str_sampling_method, num_samples=num_samples, seed=seed + ind)
 
             next_point = utils_bo.check_points_in_bounds(next_point[np.newaxis, ...], np.array(self._get_bounds()))[0]
             next_points = utils_bo.check_points_in_bounds(next_points, np.array(self._get_bounds()))

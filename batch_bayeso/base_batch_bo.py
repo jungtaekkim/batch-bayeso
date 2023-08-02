@@ -70,12 +70,13 @@ class BaseBBO(base_bo.BaseBO):
 
     def _optimize(self, fun_negative_acquisition: constants.TYPING_CALLABLE,
         str_sampling_method: str,
-        num_samples: int
+        num_samples: int,
+        seed: int=None,
     ) -> constants.TYPING_TUPLE_TWO_ARRAYS:
         list_next_point = []
 
         list_bounds = self._get_bounds()
-        initials = self.get_samples(str_sampling_method, num_samples=num_samples)
+        initials = self.get_samples(str_sampling_method, num_samples=num_samples, seed=seed)
 
         for arr_initial in initials:
             next_point = minimize(
