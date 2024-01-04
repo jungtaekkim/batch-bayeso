@@ -1,5 +1,6 @@
 from setuptools import setup
 
+
 path_requirements = 'requirements.txt'
 list_packages = [
     'batch_bayeso',
@@ -12,7 +13,7 @@ setup(
     name='batch-bayeso',
     version='0.1.0',
     author='Jungtaek Kim',
-    author_email='jtkim@postech.ac.kr',
+    author_email='jungtaek.kim.mail@gmail.com',
     url='https://bayeso.org',
     license='MIT',
     description='Batch Bayesian optimization with BayesO',
