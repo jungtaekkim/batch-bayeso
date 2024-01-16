@@ -191,7 +191,7 @@ class BBOPureExploration(base_batch_bo.BaseBBO):
                 'pure_explore'
             )
             next_point, next_points = self._optimize(fun_negative_acquisition,
-                str_sampling_method=str_sampling_method, num_samples=num_samples, seed=seed + ind)
+                str_sampling_method=str_sampling_method, num_samples=num_samples, seed=seed + ind if seed is not None else seed)
 
             next_point = utils_bo.check_points_in_bounds(next_point[np.newaxis, ...], np.array(self._get_bounds()))[0]
             next_points = utils_bo.check_points_in_bounds(next_points, np.array(self._get_bounds()))
