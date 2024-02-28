@@ -52,13 +52,15 @@ pp. 648-657. 2016.
 
 We recommend installing it with `virtualenv`.
 You can choose one of the following installation options.
+In addition, you can add `[examples]` in order to install the packages required for the examples included in the `batch-bayeso` repository.
+For example, `pip install .[examples]` or `pip install -e .[examples]`.
 
 * Using source code (for developer installation)
 
 To install `batch-bayeso` from source code, command it in the `batch-bayeso` root.
 
 ```shell
-$ pip install .
+pip install .
 ```
 
 * Using source code (for editable development mode)
@@ -66,8 +68,7 @@ $ pip install .
 To use editable development mode, command it in the `batch-bayeso` root.
 
 ```shell
-$ pip install -r requirements.txt
-$ python setup.py develop
+pip install -e .
 ```
 
 * Uninstallation
@@ -77,13 +78,6 @@ If you would like to uninstall `batch-bayeso`, command it.
 ```shell
 $ pip uninstall batch-bayeso
 ```
-
-## Required Packages
-
-Mandatory pacakges are inlcuded in `requirements.txt`.
-The following `requirements` files include the package list, the purpose of which is described as follows.
-
-* `requirements-examples.txt`: It needs to be installed to execute the examples included in the `batch-bayeso` repository.
 
 ## License
 [MIT License](LICENSE)
