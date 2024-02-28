@@ -52,8 +52,6 @@ pp. 648-657. 2016.
 
 We recommend installing it with `virtualenv`.
 You can choose one of the following installation options.
-In addition, you can add `[examples]` in order to install the packages required for the examples included in the `batch-bayeso` repository.
-For example, `pip install .[examples]` or `pip install -e .[examples]`.
 
 * Using source code (for developer installation)
 
@@ -70,6 +68,9 @@ To use editable development mode, command it in the `batch-bayeso` root.
 ```shell
 pip install -e .
 ```
+
+In addition, you can add `[examples]` in order to install the packages required for the examples included in the `batch-bayeso` repository.
+For example, `pip install .[examples]` or `pip install -e .[examples]`.
 
 * Uninstallation
 
