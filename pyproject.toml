@@ -1,0 +1,40 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+    "setuptools",
+    "setuptools-scm",
+    "bayeso",
+]
+
+[tool.setuptools]
+packages = ["batch_bayeso"]
+
+[project]
+name = "batch-bayeso"
+version = "0.1.0"
+authors = [
+    {name = "Jungtaek Kim", email = "jungtaek.kim.mail@gmail.com"},
+]
+description = "Batch Bayesian optimization with BayesO"
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "MIT"}
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
+[project.urls]
+Homepage = "https://bayeso.org"
+Source = "https://github.com/jungtaekkim/batch-bayeso"
+Issues = "https://github.com/jungtaekkim/batch-bayeso/issues"
+
+[project.optional-dependencies]
+examples = [
+    "bayeso-benchmarks",
+    "matplotlib",
+]

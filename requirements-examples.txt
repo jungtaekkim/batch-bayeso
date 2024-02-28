@@ -1,2 +1,0 @@
-bayeso-benchmarks
-matplotlib
